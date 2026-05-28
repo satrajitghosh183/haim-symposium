@@ -46,8 +46,7 @@ export default function ProgramPage() {
         {/* 01 — Title */}
         <Frame
           id="prog-title"
-          caption="Program overview"
-          screenLabel="01 / 05"
+         
         >
           <div style={{ maxWidth: '780px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '24px' }}>Nov 06 – 07 · 2026</p>
@@ -74,8 +73,7 @@ export default function ProgramPage() {
         <Frame
           id="prog-day1"
           variant="tall"
-          caption="Thursday, November 6"
-          screenLabel="02 / 05"
+         
         >
           <div style={{ maxWidth: '760px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '8px' }}>Day 01</p>
@@ -96,8 +94,7 @@ export default function ProgramPage() {
         <Frame
           id="prog-day2"
           variant="tall"
-          caption="Friday, November 7"
-          screenLabel="03 / 05"
+         
         >
           <div style={{ maxWidth: '760px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '8px' }}>Day 02</p>
@@ -117,8 +114,7 @@ export default function ProgramPage() {
         {/* 04 — Notes */}
         <Frame
           id="prog-notes"
-          caption="Housekeeping"
-          screenLabel="04 / 05"
+         
         >
           <div style={{ maxWidth: '760px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '32px' }}>Participation notes</p>
@@ -137,8 +133,7 @@ export default function ProgramPage() {
         {/* 05 — CTA */}
         <Frame
           id="prog-cta"
-          caption="Get involved"
-          screenLabel="05 / 05"
+         
         >
           <div style={{ maxWidth: '640px', textAlign: 'center' }}>
             <p className="sub" style={{ marginBottom: '32px' }}>Applications</p>

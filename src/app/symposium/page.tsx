@@ -45,8 +45,7 @@ export default function SymposiumPage() {
         {/* 01 — Title */}
         <Frame
           id="s-title"
-          caption="About the symposium"
-          screenLabel="01 / 06"
+         
         >
           <div style={{ maxWidth: '800px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '24px' }}>HAIM · 2026</p>
@@ -73,8 +72,7 @@ export default function SymposiumPage() {
         {/* 02 — Objective */}
         <Frame
           id="s-obj"
-          caption="Why we gather"
-          screenLabel="02 / 06"
+         
         >
           <div style={{ maxWidth: '780px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '24px' }}>The objective</p>
@@ -139,8 +137,7 @@ export default function SymposiumPage() {
         {/* 03 — Format */}
         <Frame
           id="s-format"
-          caption="How it runs"
-          screenLabel="03 / 06"
+         
         >
           <div style={{ maxWidth: '780px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '32px' }}>Format</p>
@@ -160,8 +157,7 @@ export default function SymposiumPage() {
         <Frame
           id="s-topics"
           variant="tall"
-          caption="What we cover"
-          screenLabel="04 / 06"
+         
         >
           <div style={{ maxWidth: '780px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '32px' }}>Ten research tracks</p>
@@ -180,8 +176,7 @@ export default function SymposiumPage() {
         {/* 05 — Output */}
         <Frame
           id="s-output"
-          caption="What we produce"
-          screenLabel="05 / 06"
+         
         >
           <div style={{ maxWidth: '700px', textAlign: 'center' }}>
             <p className="sub" style={{ marginBottom: '24px' }}>The deliverable</p>
@@ -227,8 +222,7 @@ export default function SymposiumPage() {
         {/* 06 — Next */}
         <Frame
           id="s-next"
-          caption="Explore more"
-          screenLabel="06 / 06"
+         
         >
           <div style={{ maxWidth: '640px', textAlign: 'center' }}>
             <p className="sub" style={{ marginBottom: '32px' }}>What next</p>

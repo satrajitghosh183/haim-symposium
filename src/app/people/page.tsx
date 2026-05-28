@@ -68,8 +68,7 @@ export default function PeoplePage() {
         {/* 01 — Title */}
         <Frame
           id="ppl-title"
-          caption="The people"
-          screenLabel="01 / 05"
+         
         >
           <div style={{ maxWidth: '780px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '24px' }}>Organizers · Speakers · Attendees</p>
@@ -95,8 +94,7 @@ export default function PeoplePage() {
         <Frame
           id="ppl-committee"
           variant="tall"
-          caption="Organizing committee"
-          screenLabel="02 / 05"
+         
         >
           <div style={{ maxWidth: '960px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '40px' }}>Organizing committee · 2026</p>
@@ -126,8 +124,7 @@ export default function PeoplePage() {
         <Frame
           id="ppl-keynote"
           variant="split"
-          caption="Invited keynote"
-          screenLabel="03 / 05"
+         
         >
           <div>
             <p className="sub" style={{ marginBottom: '24px' }}>Keynote speaker</p>
@@ -211,8 +208,7 @@ export default function PeoplePage() {
         {/* 04 — Invited Speakers */}
         <Frame
           id="ppl-speakers"
-          caption="Invited speakers"
-          screenLabel="04 / 05"
+         
         >
           <div style={{ maxWidth: '960px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '40px' }}>Invited speakers · Pending confirmation</p>
@@ -235,8 +231,7 @@ export default function PeoplePage() {
         {/* 05 — Interest */}
         <Frame
           id="ppl-interest"
-          caption="Get involved"
-          screenLabel="05 / 05"
+         
         >
           <div style={{ maxWidth: '640px', textAlign: 'center' }}>
             <p className="sub" style={{ marginBottom: '32px' }}>Join us</p>

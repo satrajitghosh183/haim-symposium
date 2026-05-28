@@ -24,26 +24,16 @@ export default function Home() {
 
       <div className="deck">
 
-        {/* ── 01  HERO ─────────────────────────────────────── */}
-        <Frame id="f-hero" caption={
-          <><span><em>NOV</em> 06 — 07 · 2026</span><span>STATUS — <em>OPEN</em></span><span>50 SEATS</span></>
-        }>
+        {/* 01 — HERO */}
+        <Frame id="f-hero">
           <div>
             <div className="sub" style={{ marginBottom: '24px' }}>
               <em>—</em> a working symposium · in residence · 1.5 days
             </div>
-
-            {/* The original hero title — glitch on hover, em italic accents */}
-            <h1
-              className="giga glitch"
-              data-text="Hallu_cinations."
-              style={{ marginBottom: '28px' }}
-            >
+            <h1 className="giga glitch" data-text="Hallu_cinations." style={{ marginBottom: '28px' }}>
               Hallu<em>cina</em>—<br />
               tions<em>.</em>
             </h1>
-
-            {/* Inline flicker subline — exactly like the original */}
             <div className="sub">
               the model said something{' '}
               <Flicker words={['false','untrue','invented','wrong','imaginary','fabricated','confabulated','made-up']} />{' '}
@@ -52,7 +42,6 @@ export default function Home() {
               &nbsp;·&nbsp; figuring out{' '}
               <Flicker words={['why','how','when','where','whether','what to do']} interval={4000} />.
             </div>
-
             <div className="cta-row" style={{ justifyContent: 'center', marginTop: '40px' }}>
               <Link href="/apply"     className="btn btn--primary">Apply now <span className="arrow">→</span></Link>
               <Link href="/symposium" className="btn">Read more</Link>
@@ -60,34 +49,24 @@ export default function Home() {
           </div>
         </Frame>
 
-        {/* ── 02  NOUN — giant cycling word ────────────────── */}
-        <Frame id="f-noun" caption={
-          <><span>NOUN <em>—</em> contested</span><span>9 candidates · 1 room</span><span>scroll <em>↓</em></span></>
-        }>
+        {/* 02 — NOUN */}
+        <Frame id="f-noun">
           <div>
             <div className="sub" style={{ marginBottom: '28px' }}>
               <em>—</em> what the model does, when it has no idea
             </div>
-
-            {/* This is the whole point — one giant cycling word */}
             <h2 className="giga">
-              <Flicker
-                words={['Hallucination','Confabulation','Fabrication','Mirage','Phantasm','Delusion','Bullshit','Drift','Counterfeit']}
-                interval={2400}
-              />
+              <Flicker words={['Hallucination','Confabulation','Fabrication','Mirage','Phantasm','Delusion','Bullshit','Drift','Counterfeit']} interval={2400} />
               <em>.</em>
             </h2>
-
             <p className="sub" style={{ marginTop: '36px', maxWidth: '60ch', lineHeight: '1.7' }}>
               We do not yet have one word. Day one of HAIM is, in part, an argument.
             </p>
           </div>
         </Frame>
 
-        {/* ── 03  COHORT ───────────────────────────────────── */}
-        <Frame id="f-cohort" caption={
-          <><span><em>25</em> STUDENTS · NSF-funded travel</span><span><em>25</em> PROS · academia + industry</span><span>fully in residence</span></>
-        }>
+        {/* 03 — COHORT */}
+        <Frame id="f-cohort">
           <div>
             <div className="sub" style={{ marginBottom: '32px' }}>
               <em>—</em> participants in residence
@@ -101,10 +80,8 @@ export default function Home() {
           </div>
         </Frame>
 
-        {/* ── 04  TIME ─────────────────────────────────────── */}
-        <Frame id="f-time" caption={
-          <><span>FRI <em>06 NOV</em> · introduction</span><span>SAT <em>07 NOV</em> · working sessions</span><span>11 moves total</span></>
-        }>
+        {/* 04 — TIME */}
+        <Frame id="f-time">
           <div>
             <div className="sub" style={{ marginBottom: '32px' }}>
               <em>—</em> when, and how long
@@ -121,25 +98,23 @@ export default function Home() {
           </div>
         </Frame>
 
-        {/* ── 05  TOPICS ───────────────────────────────────── */}
-        <Frame id="f-topics" variant="tall" caption={
-          <><span>TOPICS — <em>10 + 1</em></span><span>headroom on the agenda</span><span>non-exhaustive</span></>
-        }>
+        {/* 05 — TOPICS */}
+        <Frame id="f-topics" variant="tall">
           <div className="row-list">
             <div className="sub" style={{ marginBottom: '32px' }}>
               <em>—</em> ten threads, non-exhaustive
             </div>
             {[
-              ['01','Visualization of AI models — during & after training',                   'Visualization'],
-              ['02','Visualization of inference processes',                                   'Visualization'],
-              ['03','Foundational studies — statistical model equivalence & similarity',      'Foundations'  ],
-              ['04','Token space versus training-data space',                                 'Geometry'     ],
-              ['05','Exploitation of hallucinations in cyberattacks',                         'Security'     ],
-              ['06','Automated detection of AI hallucinations',                               'Detection'    ],
-              ['07','Prevention and mitigation strategies',                                   'Mitigation'   ],
-              ['08','Visualization techniques for detection & mitigation',                    'Visualization'],
-              ['09','Development of standards to reduce hallucinations',                      'Standards'    ],
-              ['10','Social implications — questions of responsibility',                      'Society'      ],
+              ['01','Visualization of AI models — during & after training',              'Visualization'],
+              ['02','Visualization of inference processes',                              'Visualization'],
+              ['03','Foundational studies — statistical model equivalence & similarity', 'Foundations'  ],
+              ['04','Token space versus training-data space',                            'Geometry'     ],
+              ['05','Exploitation of hallucinations in cyberattacks',                    'Security'     ],
+              ['06','Automated detection of AI hallucinations',                          'Detection'    ],
+              ['07','Prevention and mitigation strategies',                              'Mitigation'   ],
+              ['08','Visualization techniques for detection & mitigation',               'Visualization'],
+              ['09','Development of standards to reduce hallucinations',                 'Standards'    ],
+              ['10','Social implications — questions of responsibility',                 'Society'      ],
             ].map(([n, title, tag]) => (
               <div key={n} className="lrow">
                 <span className="lrow__n">{n}</span>
@@ -155,10 +130,8 @@ export default function Home() {
           </div>
         </Frame>
 
-        {/* ── 06  KEYNOTE ──────────────────────────────────── */}
-        <Frame id="f-keynote" caption={
-          <><span>STATUS — <em>invited</em></span><span>FRI 13:00 — 14:00</span><span>+ 4 invited talks · Sat AM</span></>
-        }>
+        {/* 06 — KEYNOTE */}
+        <Frame id="f-keynote">
           <div>
             <div className="sub" style={{ marginBottom: '32px' }}>
               <em>—</em> opening keynote · invitation pending
@@ -174,10 +147,8 @@ export default function Home() {
           </div>
         </Frame>
 
-        {/* ── 07  CTA ──────────────────────────────────────── */}
-        <Frame id="f-cta" caption={
-          <><span>© HAIM · Edition <em>I</em> · 2026</span><span>built on questions, not certainty</span><span><a href="mailto:haim@symposium.tbd">haim@symposium.tbd</a></span></>
-        }>
+        {/* 07 — CTA */}
+        <Frame id="f-cta">
           <div>
             <div className="sub" style={{ marginBottom: '32px' }}>
               <em>—</em> final frame
