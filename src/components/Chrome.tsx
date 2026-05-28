@@ -91,24 +91,19 @@ export default function Chrome() {
             <span style={{ color: 'var(--accent)' }}>{String(frame).padStart(2, '0')}</span>
           </>
         )}
-        <button
-          onClick={toggle}
-          title={paused ? 'Resume hallucinations' : 'Stop hallucinations'}
-          style={{
-            fontFamily: 'var(--mono)',
-            fontSize: '10px',
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: paused ? 'var(--accent)' : 'var(--text-faint)',
-            border: `1px solid ${paused ? 'var(--accent)' : 'var(--line-soft)'}`,
-            padding: '3px 10px',
-            background: paused ? 'color-mix(in oklab, var(--accent) 10%, transparent)' : 'transparent',
-            transition: 'all .25s',
-            cursor: 'none',
-          }}
-        >
-          {paused ? '▶ resume' : '■ stop'}
-        </button>
+        <span className="halt-wrap">
+          <button
+            onClick={toggle}
+            className={`halt-btn${paused ? ' halt-btn--paused' : ''}`}
+            aria-label={paused ? 'Resume hallucinations' : 'Stop hallucinations'}
+          >
+            <span className="halt-btn__icon">{paused ? '▶' : '■'}</span>
+            <span className="halt-btn__label">{paused ? 'resume' : 'stop'}</span>
+          </button>
+          <span className="halt-tooltip">
+            {paused ? 'Resume hallucinations' : 'Stop hallucinations'}
+          </span>
+        </span>
       </div>
     </div>
   )

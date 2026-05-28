@@ -77,7 +77,8 @@ export default function SymposiumPage() {
           <div style={{ maxWidth: '780px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '24px' }}>The objective</p>
             <h2 className="macro" style={{ marginBottom: '32px' }}>
-              Map the problem.<br />Name the gaps.
+              Map the <Flicker words={['problem','field','terrain','space']} interval={3200} as="span" />.<br />
+              Name the <Flicker words={['gaps','questions','unknowns','edges']} interval={3600} as="span" />.
             </h2>
             <div
               style={{
@@ -227,7 +228,7 @@ export default function SymposiumPage() {
           <div style={{ maxWidth: '640px', textAlign: 'center' }}>
             <p className="sub" style={{ marginBottom: '32px' }}>What next</p>
             <h2 className="macro" style={{ marginBottom: '40px' }}>
-              Ready to participate?
+              Ready to <Flicker words={['participate','contribute','attend','join','build']} interval={2800} as="span" />?
             </h2>
             <div className="cta-row" style={{ justifyContent: 'center' }}>
               <Link href="/program" className="btn btn--ghost">View program</Link>

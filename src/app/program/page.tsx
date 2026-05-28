@@ -1,6 +1,7 @@
 import Chrome from '@/components/Chrome'
 import Cursor from '@/components/Cursor'
 import DotNav from '@/components/DotNav'
+import Flicker from '@/components/Flicker'
 import Frame from '@/components/Frame'
 import Link from 'next/link'
 
@@ -51,7 +52,8 @@ export default function ProgramPage() {
           <div style={{ maxWidth: '780px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '24px' }}>Nov 06 – 07 · 2026</p>
             <h1 className="mega" style={{ marginBottom: '32px' }}>
-              Two days.<br />Eleven moves.
+              <Flicker words={['Two','2','II']} interval={4000} as="span" /> days.<br />
+              <Flicker words={['Eleven','11','XI']} interval={4400} as="span" /> moves.
             </h1>
             <p
               style={{

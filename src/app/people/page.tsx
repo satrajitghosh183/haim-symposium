@@ -1,6 +1,7 @@
 import Chrome from '@/components/Chrome'
 import Cursor from '@/components/Cursor'
 import DotNav from '@/components/DotNav'
+import Flicker from '@/components/Flicker'
 import Frame from '@/components/Frame'
 import Link from 'next/link'
 
@@ -73,7 +74,8 @@ export default function PeoplePage() {
           <div style={{ maxWidth: '780px', width: '100%' }}>
             <p className="sub" style={{ marginBottom: '24px' }}>Organizers · Speakers · Attendees</p>
             <h1 className="mega" style={{ marginBottom: '32px' }}>
-              The humans<br />behind HAIM.
+              The <Flicker words={['humans','people','minds','researchers','builders']} interval={3000} as="span" /><br />
+              behind HAIM.
             </h1>
             <p
               style={{

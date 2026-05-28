@@ -1,89 +1,73 @@
 'use client'
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 
-// useLayoutEffect is safe in client components; falls back to useEffect during SSR
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
-function useIsFinePointer() {
-  const [fine, setFine] = useState(false)
-  useIsomorphicLayoutEffect(() => {
-    setFine(window.matchMedia('(pointer: fine)').matches)
-  }, [])
-  return fine
-}
-
 export default function Cursor() {
-  const isFine = useIsFinePointer()
-  const cursorRef = useRef<HTMLDivElement>(null)
-  const posRef = useRef({ x: 0, y: 0 })
-  const targetRef = useRef({ x: 0, y: 0 })
-  const [coords, setCoords] = useState({ x: 0, y: 0 })
-  const [hover, setHover] = useState(false)
-  const rafRef = useRef<number>(0)
+  const cursorRef  = useRef<HTMLDivElement>(null)
+  const ringRef    = useRef<HTMLDivElement>(null)
+  const txtRef     = useRef<HTMLSpanElement>(null)
+  const pos        = useRef({ x: -200, y: -200 })
+  const target     = useRef({ x: -200, y: -200 })
+  const raf        = useRef<number>(0)
 
-  useEffect(() => {
-    if (!isFine) return
+  useIsomorphicLayoutEffect(() => {
+    if (!window.matchMedia('(pointer: fine)').matches) return
+
+    const LERP = 0.18
 
     const onMove = (e: MouseEvent) => {
-      targetRef.current = { x: e.clientX, y: e.clientY }
-      setCoords({ x: e.clientX, y: e.clientY })
+      target.current = { x: e.clientX, y: e.clientY }
     }
 
-    const onEnter = (e: MouseEvent) => {
+    // Hover detection — purely via DOM class, no React state
+    const onOver = (e: MouseEvent) => {
       const el = e.target as Element
-      if (el.matches('a, button, .lrow, .slot, .person, .flicker, [data-hover]')) {
-        setHover(true)
+      if (el.closest('a, button, .lrow, .slot, .person, .flicker')) {
+        cursorRef.current?.classList.add('is-link')
+      } else {
+        cursorRef.current?.classList.remove('is-link')
       }
     }
 
-    const onLeave = (e: MouseEvent) => {
-      const el = e.target as Element
-      if (el.matches('a, button, .lrow, .slot, .person, .flicker, [data-hover]')) {
-        setHover(false)
-      }
-    }
+    document.addEventListener('mousemove', onMove, { passive: true })
+    document.addEventListener('mouseover', onOver, { passive: true })
 
-    document.addEventListener('mousemove', onMove)
-    document.addEventListener('mouseover', onEnter)
-    document.addEventListener('mouseout', onLeave)
+    const tick = () => {
+      pos.current.x += (target.current.x - pos.current.x) * LERP
+      pos.current.y += (target.current.y - pos.current.y) * LERP
 
-    const animate = () => {
-      const lerp = 0.22
-      posRef.current.x += (targetRef.current.x - posRef.current.x) * lerp
-      posRef.current.y += (targetRef.current.y - posRef.current.y) * lerp
+      const x = pos.current.x.toFixed(1)
+      const y = pos.current.y.toFixed(1)
 
+      // All DOM writes — zero React re-renders
       if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate(${posRef.current.x}px, ${posRef.current.y}px)`
+        cursorRef.current.style.transform = `translate(${x}px,${y}px) translate(-50%,-50%)`
+      }
+      if (txtRef.current) {
+        txtRef.current.textContent =
+          `${String(Math.round(pos.current.x)).padStart(4,'0')} · ${String(Math.round(pos.current.y)).padStart(4,'0')}`
       }
 
-      rafRef.current = requestAnimationFrame(animate)
+      raf.current = requestAnimationFrame(tick)
     }
 
-    rafRef.current = requestAnimationFrame(animate)
+    raf.current = requestAnimationFrame(tick)
 
     return () => {
       document.removeEventListener('mousemove', onMove)
-      document.removeEventListener('mouseover', onEnter)
-      document.removeEventListener('mouseout', onLeave)
-      cancelAnimationFrame(rafRef.current)
+      document.removeEventListener('mouseover', onOver)
+      cancelAnimationFrame(raf.current)
     }
-  }, [isFine])
-
-  if (!isFine) return null
+  }, [])
 
   return (
-    <div
-      ref={cursorRef}
-      className={`cursor${hover ? ' is-hover' : ''}`}
-      aria-hidden="true"
-    >
-      <div className="cursor__ring" />
+    <div ref={cursorRef} className="cursor" aria-hidden="true">
+      <div ref={ringRef} className="cursor__ring" />
       <div className="cursor__dot" />
-      <span className="cursor__txt">
-        {coords.x},{coords.y}
-      </span>
+      <span ref={txtRef} className="cursor__txt" />
     </div>
   )
 }

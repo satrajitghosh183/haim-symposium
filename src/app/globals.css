@@ -467,6 +467,76 @@ body::after {
 .dash-card__value { font-family: var(--serif); font-size: clamp(32px, 4vw, 56px); line-height: 1; letter-spacing: -0.02em; }
 .dash-card__value em { font-style: italic; color: var(--accent); }
 
+/* ─── Halt button + tooltip ─────────────────────────────── */
+.halt-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.halt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  background: transparent;
+  cursor: none;
+  transition: all .2s;
+}
+.halt-btn:hover {
+  border-color: var(--error);
+  color: var(--error);
+}
+.halt-btn--paused {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+.halt-btn__icon {
+  font-size: 9px;
+  line-height: 1;
+}
+.halt-btn__label {
+  letter-spacing: 0.2em;
+}
+
+/* Tooltip — pops up above on hover */
+.halt-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--text);
+  padding: 5px 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .18s, transform .18s;
+}
+.halt-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; right: 18px;
+  border: 5px solid transparent;
+  border-top-color: var(--text);
+}
+.halt-wrap:hover .halt-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── Auth pages ────────────────────────────────────────── */
 .auth-wrap { min-height: 100vh; display: grid; place-items: center; padding: var(--pad); }
 .auth-box { width: 100%; max-width: 520px; }
