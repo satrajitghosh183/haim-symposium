@@ -1,65 +1,233 @@
-import Image from "next/image";
+import Chrome from '@/components/Chrome'
+import Cursor from '@/components/Cursor'
+import DotNav from '@/components/DotNav'
+import Flicker from '@/components/Flicker'
+import Frame from '@/components/Frame'
+import Link from 'next/link'
+
+const DOT_NAV = [
+  { href: '#hero', label: 'Hero' },
+  { href: '#noun', label: 'What' },
+  { href: '#cohort', label: 'Who' },
+  { href: '#time', label: 'When' },
+  { href: '#topics', label: 'Topics' },
+  { href: '#keynote', label: 'Keynote' },
+  { href: '#apply', label: 'Apply' },
+]
+
+const TOPICS = [
+  { n: '01', title: 'Foundations of hallucination in large language models', key: 'hallucination', tag: 'LLM' },
+  { n: '02', title: 'Inference-time confabulation and mitigation strategies', key: 'inference', tag: 'Inference' },
+  { n: '03', title: 'Token-level uncertainty and calibration', key: 'Token', tag: 'Calibration' },
+  { n: '04', title: 'Hallucinations as cyberattacks vectors', key: 'cyberattacks', tag: 'Security' },
+  { n: '05', title: 'Automated detection of model fabrications', key: 'detection', tag: 'Eval' },
+  { n: '06', title: 'Prevention through architectural design', key: 'Prevention', tag: 'Architecture' },
+  { n: '07', title: 'Regulatory standards and audit frameworks', key: 'standards', tag: 'Policy' },
+  { n: '08', title: 'Moral responsibility in deployed AI systems', key: 'responsibility', tag: 'Ethics' },
+  { n: '09', title: 'Human-AI collaborative fact-checking pipelines', key: 'collaboration', tag: 'Human-AI' },
+  { n: '10', title: 'Benchmark construction and red-teaming methodology', key: 'benchmark', tag: 'Benchmarks' },
+]
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <Chrome />
+      <Cursor />
+      <DotNav links={DOT_NAV} />
+
+      <div className="deck">
+        {/* 01 — Hero */}
+        <Frame
+          id="hero"
+          caption="HAIM · Symposium 2026"
+          screenLabel="01 / 07"
+        >
+          <div style={{ textAlign: 'center', maxWidth: '900px' }}>
+            <p className="sub" style={{ marginBottom: '32px' }}>
+              A working symposium · NSF Supported
+            </p>
+            <h1
+              className="giga glitch"
+              data-text="Hallucinations."
+              style={{ marginBottom: '32px' }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Hallu<em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>cina</em>—<br />
+              tions<em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>.</em>
+            </h1>
+            <div className="sub" style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '28px' }}>
+              the model said something{' '}
+              <Flicker words={['untrue', 'invented', 'wrong', 'fabricated', 'confabulated']} interval={2800} />
+              &nbsp;·&nbsp; we&apos;ll spend{' '}
+              <Flicker words={['1.5 days', '36 hours', 'a Friday & Saturday']} interval={3400} />
+              &nbsp;·&nbsp; figuring out{' '}
+              <Flicker words={['why', 'how', 'when', 'what to do']} interval={4000} />
+            </div>
+            <div className="cta-row" style={{ justifyContent: 'center', marginTop: '48px' }}>
+              <Link href="/apply" className="btn btn--primary">Apply now</Link>
+              <Link href="/symposium" className="btn btn--ghost">Learn more</Link>
+            </div>
+          </div>
+        </Frame>
+
+        {/* 02 — Noun */}
+        <Frame
+          id="noun"
+          caption="NOUN — contested · 9 candidates · 1 room"
+          screenLabel="02 / 07"
+        >
+          <div style={{ textAlign: 'center' }}>
+            <p className="sub" style={{ marginBottom: '28px' }}>— what the model does, when it has no idea</p>
+            <h2 className="giga">
+              <Flicker
+                words={['Hallucination', 'Confabulation', 'Fabrication', 'Mirage', 'Phantasm', 'Delusion', 'Drift', 'Counterfeit']}
+                interval={2400}
+                as="span"
+              />
+              <em>.</em>
+            </h2>
+            <p className="sub" style={{ marginTop: '36px', maxWidth: '60ch', lineHeight: '1.7' }}>
+              We do not yet have one word. Day one of HAIM is, in part, an argument.
+            </p>
+          </div>
+        </Frame>
+
+        {/* 03 — Cohort */}
+        <Frame
+          id="cohort"
+          caption="The cohort"
+          screenLabel="03 / 07"
+        >
+          <div style={{ textAlign: 'center', maxWidth: '700px' }}>
+            <p className="sub" style={{ marginBottom: '24px' }}>Selected attendees</p>
+            <div className="giga" style={{ marginBottom: '24px', color: 'var(--accent)' }}>
+              <Flicker words={['50', '25+25', 'fifty']} interval={3800} as="span" />
+            </div>
+            <p className="macro" style={{ marginBottom: '24px', color: 'var(--text-dim)' }}>
+              25 students · 25 professionals
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--sans)',
+                fontSize: '14px',
+                color: 'var(--text-faint)',
+                lineHeight: '1.8',
+                maxWidth: '480px',
+                margin: '0 auto',
+              }}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+              Half early-career researchers and students. Half industry practitioners and academics.
+              Selected through an open application with lightning talk requirement for students.
+            </p>
+          </div>
+        </Frame>
+
+        {/* 04 — Time */}
+        <Frame
+          id="time"
+          caption="The schedule"
+          screenLabel="04 / 07"
+        >
+          <div style={{ textAlign: 'center', maxWidth: '700px' }}>
+            <p className="sub" style={{ marginBottom: '24px' }}>Mark your calendar</p>
+            <div className="giga" style={{ marginBottom: '32px' }}>
+              <Flicker words={['1.5 days', '36 hours', 'Nov 06—07']} interval={3000} as="span" />
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--sans)',
+                fontSize: '15px',
+                color: 'var(--text-dim)',
+                marginBottom: '40px',
+              }}
+            >
+              November 6–7, 2026
+            </p>
+            <Link href="/program" className="btn btn--ghost">View full program →</Link>
+          </div>
+        </Frame>
+
+        {/* 05 — Topics */}
+        <Frame
+          id="topics"
+          variant="tall"
+          caption="Research tracks"
+          screenLabel="05 / 07"
+        >
+          <div style={{ maxWidth: '780px', width: '100%' }}>
+            <p className="sub" style={{ marginBottom: '32px' }}>Ten working areas</p>
+            <div>
+              {TOPICS.map((t) => (
+                <div key={t.n} className="lrow">
+                  <span className="lrow__n">{t.n}</span>
+                  <span className="lrow__t">{t.title}</span>
+                  <span className="lrow__c">{t.tag}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Frame>
+
+        {/* 06 — Keynote */}
+        <Frame
+          id="keynote"
+          caption="Featured speaker"
+          screenLabel="06 / 07"
+        >
+          <div style={{ maxWidth: '700px', textAlign: 'center' }}>
+            <p className="sub" style={{ marginBottom: '24px' }}>Keynote</p>
+            <div className="mega" style={{ marginBottom: '16px' }}>
+              <Flicker
+                words={['Yann LeCun', '[TBD]', 'Invited']}
+                interval={5000}
+                as="span"
+              />
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--sans)',
+                fontSize: '14px',
+                color: 'var(--text-faint)',
+                letterSpacing: '0.06em',
+              }}
+            >
+              Chief AI Scientist · Meta AI · NYU
+            </p>
+            <div className="cta-row" style={{ justifyContent: 'center' }}>
+              <Link href="/people" className="btn btn--ghost">All speakers →</Link>
+            </div>
+          </div>
+        </Frame>
+
+        {/* 07 — CTA */}
+        <Frame
+          id="apply"
+          caption="Applications open"
+          screenLabel="07 / 07"
+        >
+          <div style={{ textAlign: 'center', maxWidth: '640px' }}>
+            <p className="sub" style={{ marginBottom: '32px' }}>Join the symposium</p>
+            <h2 className="macro" style={{ marginBottom: '24px' }}>
+              Come build the report.
+            </h2>
+            <p
+              style={{
+                fontFamily: 'var(--sans)',
+                fontSize: '15px',
+                color: 'var(--text-dim)',
+                lineHeight: '1.7',
+                marginBottom: '40px',
+              }}
+            >
+              The symposium produces a public research report on the state of AI hallucinations.
+              Every attendee contributes. Apply before the deadline.
+            </p>
+            <div className="cta-row" style={{ justifyContent: 'center' }}>
+              <Link href="/apply" className="btn btn--primary">Apply now</Link>
+              <Link href="/symposium" className="btn btn--ghost">Read more</Link>
+            </div>
+          </div>
+        </Frame>
+      </div>
+    </>
+  )
 }
