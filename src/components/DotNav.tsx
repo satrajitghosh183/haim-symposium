@@ -11,6 +11,7 @@ export default function DotNav({ links }: DotNavProps) {
 
   useEffect(() => {
     const ids = links.map((l) => l.href.replace('#', ''))
+    const deck = document.querySelector('.deck')
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[]
@@ -26,7 +27,7 @@ export default function DotNav({ links }: DotNavProps) {
           }
         })
       },
-      { threshold: 0.4 }
+      { root: deck, threshold: 0.55 }
     )
 
     sections.forEach((s) => obs.observe(s))
@@ -36,24 +37,22 @@ export default function DotNav({ links }: DotNavProps) {
   const handleClick = (href: string, idx: number) => {
     setActive(idx)
     const id = href.replace('#', '')
+    const deck = document.querySelector('.deck')
     const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    if (el && deck) deck.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
   }
 
   return (
-    <nav className="dotnav" aria-label="Section navigation">
+    <nav className="dotnav" aria-label="frames">
       {links.map((link, idx) => (
-        <button
+        // Use <a> so the existing CSS selectors (.dotnav a, .dotnav a span) apply
+        <a
           key={link.href}
-          className={`dotnav__item${active === idx ? ' is-active' : ''}`}
-          onClick={() => handleClick(link.href, idx)}
-          aria-label={`Jump to ${link.label}`}
-        >
-          <span className="dotnav__label">{link.label}</span>
-          <span className="dotnav__pip" />
-        </button>
+          href={link.href}
+          className={active === idx ? 'is-active' : ''}
+          onClick={(e) => { e.preventDefault(); handleClick(link.href, idx) }}
+          aria-label={link.label}
+        />
       ))}
     </nav>
   )

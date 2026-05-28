@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { FlickerProvider } from '@/lib/flicker-context'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body><FlickerProvider>{children}</FlickerProvider></body>
     </html>
   )
 }

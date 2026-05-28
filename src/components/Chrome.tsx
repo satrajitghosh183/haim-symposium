@@ -1,19 +1,21 @@
 'use client'
 
+import { useFlicker } from '@/lib/flicker-context'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/symposium', label: 'Symposium' },
-  { href: '/program', label: 'Program' },
-  { href: '/people', label: 'People' },
-  { href: '/apply', label: 'Apply' },
+  { href: '/',           label: '01 · Index'    },
+  { href: '/symposium',  label: '02 · Symposium' },
+  { href: '/program',    label: '03 · Program'  },
+  { href: '/people',     label: '04 · People'   },
+  { href: '/apply',      label: '05 · Apply'    },
 ]
 
 export default function Chrome() {
   const pathname = usePathname()
+  const { paused, toggle } = useFlicker()
   const [time, setTime] = useState('')
   const [frame, setFrame] = useState(0)
 
@@ -60,20 +62,18 @@ export default function Chrome() {
         </Link>
       </div>
 
-      {/* Top-right: nav */}
-      <div className="chrome__tr">
-        <nav style={{ display: 'flex', gap: '4px' }}>
-          {NAV_LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={`nav-link${pathname === l.href ? ' is-active' : ''}`}
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+      {/* Top-right: nav — numbered, spaced, bigger */}
+      <nav className="chrome__tr">
+        {NAV_LINKS.map((l) => (
+          <Link
+            key={l.href}
+            href={l.href}
+            className={pathname === l.href ? 'is-active' : ''}
+          >
+            {l.label}
+          </Link>
+        ))}
+      </nav>
 
       {/* Bottom-left: sponsors */}
       <div className="chrome__bl">
@@ -82,7 +82,7 @@ export default function Chrome() {
         <span>Nov 06 — 07 · 2026</span>
       </div>
 
-      {/* Bottom-right: clock + frame counter */}
+      {/* Bottom-right: clock + frame counter + pause toggle */}
       <div className="chrome__br">
         <span>{time}</span>
         {frame > 0 && (
@@ -91,6 +91,24 @@ export default function Chrome() {
             <span style={{ color: 'var(--accent)' }}>{String(frame).padStart(2, '0')}</span>
           </>
         )}
+        <button
+          onClick={toggle}
+          title={paused ? 'Resume hallucinations' : 'Stop hallucinations'}
+          style={{
+            fontFamily: 'var(--mono)',
+            fontSize: '10px',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: paused ? 'var(--accent)' : 'var(--text-faint)',
+            border: `1px solid ${paused ? 'var(--accent)' : 'var(--line-soft)'}`,
+            padding: '3px 10px',
+            background: paused ? 'color-mix(in oklab, var(--accent) 10%, transparent)' : 'transparent',
+            transition: 'all .25s',
+            cursor: 'none',
+          }}
+        >
+          {paused ? '▶ resume' : '■ stop'}
+        </button>
       </div>
     </div>
   )
