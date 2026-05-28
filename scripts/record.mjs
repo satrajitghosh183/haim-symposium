@@ -67,11 +67,11 @@ async function smoothScroll(page, selector, targetY, durationMs = 1200) {
   await sleep(2800) // let flicker settle on hero
 
   // Scroll through each frame
-  const frameIds = ['noun', 'cohort', 'time', 'topics', 'keynote', 'apply']
+  const frameIds = ['f-noun', 'f-cohort', 'f-time', 'f-topics', 'f-keynote', 'f-cta']
   for (const id of frameIds) {
     const frame = page.locator(`#${id}`)
     await frame.scrollIntoViewIfNeeded()
-    await sleep(id === 'topics' ? 3200 : 2400)
+    await sleep(id === 'f-topics' ? 3200 : 2400)
   }
 
   // ── PROGRAM PAGE ──────────────────────────────────────────────────────────
